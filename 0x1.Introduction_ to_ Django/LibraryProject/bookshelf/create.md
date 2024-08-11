@@ -1,10 +1,13 @@
 
-
 from bookshelf.models import Book
 
+# This Create a new book instance 
+book = Book.objects.create(title = "1984", author="George Orwell", publication_year=1949)
 
-book = Book(title="1984", author="George Orwell", publication_year=1949)
-book.save()
-
-
+# Checking to see if the book was created
 print(Book.objects.all())
+
+Ouput: 
+
+<QuerySet [<Book: 1984 by George Orwell>]>
+
