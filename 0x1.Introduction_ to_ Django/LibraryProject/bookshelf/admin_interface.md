@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Book
+from .models import Book  # Import the Book model
 
 class BookAdmin(admin.ModelAdmin):
-    # displaying the list view
+    # displaying  list view
     list_display = ('title', 'author', 'publication_year')
     
-    # searching
+    # Add searching 
     search_fields = ('title', 'author')
     
     # Adding filters
