@@ -1,6 +1,4 @@
-
 # relationship_app/models.py
-
 from django.db import models
 
 class Author(models.Model):
@@ -17,7 +15,7 @@ class Book(models.Model):
         return self.title
 
 class Library(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=200)
     books = models.ManyToManyField(Book)
 
     def __str__(self):
