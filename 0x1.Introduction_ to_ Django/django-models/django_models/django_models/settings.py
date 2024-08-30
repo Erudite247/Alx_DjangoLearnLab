@@ -70,6 +70,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_models.wsgi.application'
 
+WSGI_APPLICATION = 'django_models.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
