@@ -1,30 +1,22 @@
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.decorators import permission_required
-from django.views.generic import DetailView, ListView
-from .models import Book, Library
+# relationship_app/views.py
 
-@permission_required('relationship_app.can_add_book')
-def add_book(request):
-    # Your logic for adding a book
-    pass
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Book
 
-@permission_required('relationship_app.can_change_book')
-def edit_book(request, pk):
-    book = get_object_or_404(Book, pk=pk)
-    # Your logic for editing a book
-    pass
+class AddBookView(CreateView):
+    model = Book
+    fields = ['title', 'author', 'publication_year']
+    template_name = 'relationship_app/book_form.html'
+    success_url = reverse_lazy('book_list')  # Redirect after successful addition
 
-@permission_required('relationship_app.can_delete_book')
-def delete_book(request, pk):
-    book = get_object_or_404(Book, pk=pk)
-    # Your logic for deleting a book
-    pass
+class EditBookView(UpdateView):
+    model = Book
+    fields = ['title', 'author', 'publication_year']
+    template_name = 'relationship_app/book_form.html'
+    success_url = reverse_lazy('book_list')  # Redirect after successful update
 
-def list_books(request):
-    books = Book.objects.all()
-    return render(request, 'relationship_app/list_books.html', {'books': books})
-
-class LibraryDetailView(DetailView):
-    model = Library
-    template_name = 'library_detail.html'
-    context_object_name = 'library'
+class DeleteBookView(DeleteView):
+    model = Book
+    template_name = 'relationship_app/book_confirm_delete.html'
+    success_url = reverse_lazy('book_list')  # Redirect after successful deletion
