@@ -1,14 +1,7 @@
-<!-- templates/registration/profile.html-->
-{% extends 'blog/base.html' %}
-{% load static %}
-
-{% block content %}
-<h2>{{ user.username }}'s Profile</h2>
-<br>
-<form method="post">
+<h2>Profile</h2>
+<form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <br>
+    <input type="email" name="email" value="{{ user.email }}" required>
     <button type="submit">Update Profile</button>
 </form>
-{% endblock %}
+<p><a href="{% url 'logout' %}">Logout</a></p>

@@ -1,20 +1,8 @@
-<!-- templates/blog/login.html-->
-{% extends 'blog/base.html' %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-{% block content %}
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <h2>Login</h2>
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<form method="post">
+<form method="POST">
     {% csrf_token %}
-    <br>
-    {{ form.as_p }}
-    <br>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
 </form>
-<br>
-<p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
-{% endblock %}
+<p><a href="{% url 'register' %}">Create an account</a></p>
