@@ -1,0 +1,15 @@
+vdjango_blog/
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Other
+*.sqlite3
